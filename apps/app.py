@@ -18,3 +18,9 @@ with open("models/standardscaler.sav", "rb") as f:
 # loading the saved scaler
 with open("models/one_hot_encoder.sav", "rb") as f:
     loaded_one_hot_encoder = pickle.load(f)
+
+# loading the saved modal columns name
+with open("models/model_columns.sav", "rb") as f:
+    loaded_model_columns = pickle.load(f)
+
+    
