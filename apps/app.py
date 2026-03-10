@@ -56,3 +56,40 @@ def credit_risk_prediction(input_data):
 
     else:
         return 'Not Paid. Default'
+
+def main():
+
+    # giving a title
+    st.title("Credit Risk Prediction Web App")
+
+    # getting the input data from the user
+
+    PersonAge = st.text_input("Enter Age")
+    PersonIncome = st.text_input("Enter Person Income")
+    PersonHomeOwnership = st.text_input("Enter Person Home Ownership")
+    PersonEmpLength = st.text_input("Enter Person Employment Length")
+    LoanIntent = st.text_input("Enter Loan Intent")
+    LoanGrade = st.text_input("Enter Loan Grade")
+    LoanAmount = st.text_input("Enter Loan Amount")
+    LoanInterestRate = st.text_input("Enter Interest Rate")
+    LoanPercentIncome = st.text_input("Enter Loan Percent Income")
+    CbPersonDefaultOnFile = st.text_input("Enter Cb Person Default On File")
+    CbPersonCreditHistoryLength = st.text_input("Enter Cb Person Credit History Length")
+
+
+    # code for prediction
+    prediction = ''
+
+    # creating a button for prediction
+    
+    if st.button('Credit Test Result'):
+
+        inputs = [PersonAge, PersonIncome, PersonHomeOwnership, PersonEmpLength, LoanIntent, LoanGrade, LoanAmount, LoanInterestRate, LoanPercentIncome, CbPersonDefaultOnFile, CbPersonCreditHistoryLength]
+
+        #check for empty fields
+        if any(value.strip() == "" for value in inputs):
+            st.error("Please Fill in all the Required Fields.")
+        
+
+if __name__ == '__main__':
+    main()
