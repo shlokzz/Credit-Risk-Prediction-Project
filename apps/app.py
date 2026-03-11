@@ -60,21 +60,37 @@ def credit_risk_prediction(input_data):
 def main():
 
     # giving a title
-    st.title("Credit Risk Prediction Web App")
+    st.set_page_config(page_title="Credit Risk Analyzer", layout="wide")
+    st.title("Credit Risk Prediction System")
+    set.markdown("---")
 
-    # getting the input data from the user
+    # use the columns the UI look organized
+    col1, col2 = st.column_config(2)
 
-    PersonAge = st.text_input("Enter Age")
-    PersonIncome = st.text_input("Enter Person Income")
-    PersonHomeOwnership = st.text_input("Enter Person Home Ownership")
-    PersonEmpLength = st.text_input("Enter Person Employment Length")
-    LoanIntent = st.text_input("Enter Loan Intent")
-    LoanGrade = st.text_input("Enter Loan Grade")
-    LoanAmount = st.text_input("Enter Loan Amount")
-    LoanInterestRate = st.text_input("Enter Interest Rate")
-    LoanPercentIncome = st.text_input("Enter Loan Percent Income")
-    CbPersonDefaultOnFile = st.text_input("Enter Cb Person Default On File")
-    CbPersonCreditHistoryLength = st.text_input("Enter Cb Person Credit History Length")
+    with col1:
+        st.subheader("Personal Information")
+
+        # getting the input data from the user
+        PersonAge = st.number_input("Enter Applicant Age", min_value=18, max_value=110, step=1)
+        PersonIncome = st.number_input("Enter Annual Income ($)", min_value=0, step= 1000)
+        PersonEmpLength = st.number_input("Enter Employment Length (Years)", min_value=0.0, max_value=65.0, step=0.5)
+        CbPersonCreditHistoryLength = st.number_input("Enter Credit History Length (Years)", min_value=0, max_value=50)
+
+    with col2:  
+        st.subheader("Loan Details")
+
+        # getting the input data from the user
+        LoanAmount = st.number_input("Enter Requested Loan Amount ($)", min_value=0, step=500)
+        LoanInterestRate = st.number_input("Enter Interest Rate (%)", min_value=0.0, max_value=30.0, step=0.1)
+        LoanPercentIncome = st.number_input("Enter Loan Percent Income (0.0 - 1.0)", min_value=0.0, max_value=1.0, step=0.01)
+        
+        c1, c2,c3,c4 = st.column_config(4)
+
+        with c1:
+            PersonHomeOwnership = st.selectbox("Home Ownership",["RENT"])
+            CbPersonDefaultOnFile = st.text_input("Enter Cb Person Default On File")
+            LoanIntent = st.text_input("Enter Loan Intent")
+            LoanGrade = st.text_input("Enter Loan Grade")
 
 
     # code for prediction
