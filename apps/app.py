@@ -62,7 +62,7 @@ def main():
     # giving a title
     st.set_page_config(page_title="Credit Risk Analyzer", layout="wide")
     st.title("Credit Risk Prediction System")
-    set.markdown("---")
+    st.markdown("---")
 
     # use the columns the UI look organized
     col1, col2 = st.column_config(2)
@@ -87,25 +87,28 @@ def main():
         c1, c2,c3,c4 = st.column_config(4)
 
         with c1:
-            PersonHomeOwnership = st.selectbox("Home Ownership",["RENT"])
-            CbPersonDefaultOnFile = st.text_input("Enter Cb Person Default On File")
-            LoanIntent = st.text_input("Enter Loan Intent")
-            LoanGrade = st.text_input("Enter Loan Grade")
+            PersonHomeOwnership = st.selectbox("Home Ownership",["RENT","OWN","MORTGAGE","OTHER"])
 
+        with c2:
+            LoanIntent = st.selectbox("Loan Purpose",["PERSONAL","EDUCATION","MEDICAL","REVENUE","HOMEMPORVEMENT" ,"DEBTCONSOLIDATION"])
+
+        with c3:
+            LoanGrade = st.selectbox("Loan Grade",["A","B","C","D","E","F","G"])
+
+        with c4:
+            CbPersonDefaultOnFile = st.selectbox("Previous Default History?", ["Y","N"] )
 
     # code for prediction
     prediction = ''
 
     # creating a button for prediction
-    
     if st.button('Credit Test Result'):
 
         inputs = [PersonAge, PersonIncome, PersonHomeOwnership, PersonEmpLength, LoanIntent, LoanGrade, LoanAmount, LoanInterestRate, LoanPercentIncome, CbPersonDefaultOnFile, CbPersonCreditHistoryLength]
 
-        #check for empty fields
-        if any(value.strip() == "" for value in inputs):
-            st.error("Please Fill in all the Required Fields.")
-        
+        # Run prediction
+        prediction = credit_risk_prediction(inputs)
+        st.success(prediction)
 
 if __name__ == '__main__':
     main()
