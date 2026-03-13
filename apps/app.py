@@ -58,14 +58,13 @@ def credit_risk_prediction(input_data):
         return 'Not Paid. Default'
 
 def main():
-
     # giving a title
     st.set_page_config(page_title="Credit Risk Analyzer", layout="wide")
     st.title("Credit Risk Prediction System")
     st.markdown("---")
 
     # use the columns the UI look organized
-    col1, col2 = st.column_config(2)
+    col1, col2 = st.columns(2)
 
     with col1:
         st.subheader("Personal Information")
@@ -84,7 +83,7 @@ def main():
         LoanInterestRate = st.number_input("Enter Interest Rate (%)", min_value=0.0, max_value=30.0, step=0.1)
         LoanPercentIncome = st.number_input("Enter Loan Percent Income (0.0 - 1.0)", min_value=0.0, max_value=1.0, step=0.01)
         
-        c1, c2,c3,c4 = st.column_config(4)
+        c1, c2,c3,c4 = st.columns(4)
 
         with c1:
             PersonHomeOwnership = st.selectbox("Home Ownership",["RENT","OWN","MORTGAGE","OTHER"])
@@ -106,7 +105,6 @@ def main():
 
         inputs = [PersonAge, PersonIncome, PersonHomeOwnership, PersonEmpLength, LoanIntent, LoanGrade, LoanAmount, LoanInterestRate, LoanPercentIncome, CbPersonDefaultOnFile, CbPersonCreditHistoryLength]
 
-        # Run prediction
         prediction = credit_risk_prediction(inputs)
         st.success(prediction)
 
