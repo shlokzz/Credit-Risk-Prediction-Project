@@ -163,14 +163,14 @@ def main():
         inputs = {
             "person_age": PersonAge,
             "person_income": PersonIncome,
-            "person_home_ownership": PersonHomeOwnership,
+            "person_home_ownership": PersonHomeOwnership.lower(),
             "person_emp_length": PersonEmpLength,
-            "loan_intent": LoanIntent,
-            "loan_grade": LoanGrade,
+            "loan_intent": LoanIntent.lower(),
+            "loan_grade": LoanGrade.lower(),
             "loan_amnt": LoanAmount,
             "loan_int_rate": LoanInterestRate,
             "loan_percent_income": LoanPercentIncome,
-            "cb_person_default_on_file": CbPersonDefaultOnFile,
+            "cb_person_default_on_file": CbPersonDefaultOnFile.lower(),
             "cb_person_cred_hist_length": CbPersonCreditHistoryLength,
         }
 
