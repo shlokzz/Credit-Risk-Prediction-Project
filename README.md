@@ -2,7 +2,7 @@
 
 Built an end to end credit risk classifier which predicts whether a loan applicant will default using a Random Forest Classifier trained on 32000+ records - achieving around **93.3% accuracy** with around **0.97 precision**, deployed as an interactive web application.
 
-[screenshot]
+![screenshot of the streamlit interactive app] (app-screenshot/image.png)
 
 ## The Problem
 Banks need to identify high-risk loan applicants before approving credit. Missed defaults cost money; wrongly rejecting good applicants costs customers. This model optimizes for precision - minimizing false rejections while catching the majority of real defaults.
